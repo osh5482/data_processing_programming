@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dividend Analysis Workflow</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 20px auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        .workflow-container {
+            width: 100%;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+            min-width: 800px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>배당주 분석 시스템 워크플로우</h1>
+        <div class="workflow-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600">
+                <!-- Definitions -->
+                <defs>
+                    <!-- Gradients -->
+                    <linearGradient id="dataGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#6495ED;stop-opacity:0.8"/>
+                        <stop offset="100%" style="stop-color:#4169E1;stop-opacity:0.9"/>
+                    </linearGradient>
+                    <linearGradient id="analysisGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#98FB98;stop-opacity:0.8"/>
+                        <stop offset="100%" style="stop-color:#3CB371;stop-opacity:0.9"/>
+                    </linearGradient>
+                    <linearGradient id="webGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#FFA07A;stop-opacity:0.8"/>
+                        <stop offset="100%" style="stop-color:#FF7F50;stop-opacity:0.9"/>
+                    </linearGradient>
+
+                    <!-- Box Shadow Filter -->
+                    <filter id="shadow">
+                        <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+                    </filter>
+
+                    <!-- Arrow Marker -->
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+                    </marker>
+                </defs>
+
+                <!-- Data Collection System -->
+                <g transform="translate(50, 50)">
+                    <rect x="0" y="0" width="250" height="180" rx="20" fill="url(#dataGradient)" filter="url(#shadow)"/>
+                    <text x="125" y="40" text-anchor="middle" fill="white" font-family="Arial" font-size="18" font-weight="bold">데이터 수집 시스템</text>
+                    
+                    <!-- Icons -->
+                    <circle cx="80" cy="90" r="25" fill="white" opacity="0.9"/>
+                    <text x="80" y="95" text-anchor="middle" font-family="Arial" font-size="12">KRX Data</text>
+                    
+                    <circle cx="170" cy="90" r="25" fill="white" opacity="0.9"/>
+                    <text x="170" y="95" text-anchor="middle" font-family="Arial" font-size="12">Stock Info</text>
+                    
+                    <rect x="50" y="130" width="150" height="30" rx="15" fill="white" opacity="0.9"/>
+                    <text x="125" y="150" text-anchor="middle" font-family="Arial" font-size="12">Database Storage</text>
+                </g>
+
+                <!-- Analysis System -->
+                <g transform="translate(400, 50)">
+                    <rect x="0" y="0" width="250" height="180" rx="20" fill="url(#analysisGradient)" filter="url(#shadow)"/>
+                    <text x="125" y="40" text-anchor="middle" fill="white" font-family="Arial" font-size="18" font-weight="bold">분석 시스템</text>
+                    
+                    <!-- Icons -->
+                    <circle cx="80" cy="90" r="25" fill="white" opacity="0.9"/>
+                    <text x="80" y="95" text-anchor="middle" font-family="Arial" font-size="12">필터링</text>
+                    
+                    <circle cx="170" cy="90" r="25" fill="white" opacity="0.9"/>
+                    <text x="170" y="95" text-anchor="middle" font-family="Arial" font-size="12">성과분석</text>
+                    
+                    <rect x="50" y="130" width="150" height="30" rx="15" fill="white" opacity="0.9"/>
+                    <text x="125" y="150" text-anchor="middle" font-family="Arial" font-size="12">포트폴리오 생성</text>
+                </g>
+
+                <!-- Web Interface -->
+                <g transform="translate(200, 300)">
+                    <rect x="0" y="0" width="600" height="250" rx="20" fill="url(#webGradient)" filter="url(#shadow)"/>
+                    <text x="300" y="40" text-anchor="middle" fill="white" font-family="Arial" font-size="18" font-weight="bold">웹 인터페이스</text>
+                    
+                    <!-- Frontend -->
+                    <g transform="translate(50, 70)">
+                        <rect x="0" y="0" width="200" height="150" rx="15" fill="white" opacity="0.9"/>
+                        <text x="100" y="30" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">Frontend</text>
+                        <text x="20" y="60" font-family="Arial" font-size="14">• 조건 입력</text>
+                        <text x="20" y="90" font-family="Arial" font-size="14">• 포트폴리오 시각화</text>
+                        <text x="20" y="120" font-family="Arial" font-size="14">• 성과 비교</text>
+                    </g>
+
+                    <!-- Backend -->
+                    <g transform="translate(350, 70)">
+                        <rect x="0" y="0" width="200" height="150" rx="15" fill="white" opacity="0.9"/>
+                        <text x="100" y="30" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">Backend</text>
+                        <text x="20" y="60" font-family="Arial" font-size="14">• DB 쿼리</text>
+                        <text x="20" y="90" font-family="Arial" font-size="14">• 포트폴리오 생성</text>
+                        <text x="20" y="120" font-family="Arial" font-size="14">• 성과 계산</text>
+                    </g>
+                </g>
+
+                <!-- Connecting Arrows -->
+                <g stroke-width="2" stroke="#666" fill="none">
+                    <!-- Data to Analysis -->
+                    <path d="M 300,140 Q 350,140 400,140" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+                    <!-- Analysis to Web -->
+                    <path d="M 525,230 Q 525,265 525,300" marker-end="url(#arrowhead)"/>
+                    <!-- Frontend to Backend -->
+                    <path d="M 450,445 L 550,445" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+                </g>
+            </svg>
+        </div>
+    </div>
+</body>
+</html>
