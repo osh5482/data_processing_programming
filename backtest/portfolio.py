@@ -4,9 +4,11 @@ import pandas as pd
 import numpy as np
 from typing import Optional, Dict, List, Tuple
 
+
 @dataclass
 class Portfolio:
     """포트폴리오 데이터를 저장하는 데이터 클래스"""
+
     initial_capital: float
     start_date: str
     end_date: str
@@ -14,7 +16,7 @@ class Portfolio:
     benchmark: Optional[pd.Series] = None
     weights: Optional[np.ndarray] = None
     stock_info: Optional[pd.DataFrame] = None
-    
+
     @property
     def n_assets(self) -> int:
         """포트폴리오 내 자산 수 반환"""
@@ -36,9 +38,11 @@ class Portfolio:
         """기간 수익률 계산"""
         if not self.validate():
             raise ValueError("포트폴리오 데이터가 유효하지 않습니다")
-            
+
         portfolio_return = (self.stock_prices * self.weights).sum(axis=1)
-        portfolio_return = (portfolio_return[-1] / portfolio_return[0] - 1) * 100
-        benchmark_return = (self.benchmark[-1] / self.benchmark[0] - 1) * 100
-        
+        portfolio_return = (
+            portfolio_return.iloc[-1] / portfolio_return.iloc[0] - 1
+        ) * 100
+        benchmark_return = (self.benchmark.iloc[-1] / self.benchmark.iloc[0] - 1) * 100
+
         return portfolio_return, benchmark_return
